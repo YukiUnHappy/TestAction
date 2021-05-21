@@ -27,7 +27,6 @@ jobs:
           ref: new
       - name: Create local changes
         run: |
-          git checkout -b new
           echo def >> abc
           git add abc
       - name: Commit files
