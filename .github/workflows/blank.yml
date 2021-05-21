@@ -23,14 +23,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: new
       - name: Create local changes
         run: |
           git checkout -b new
-          echo abc >> def
-          git add def
+          echo def >> abc
+          git add abc
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git commit -m "Add changes"
-          git push -u origin new
+          git push
