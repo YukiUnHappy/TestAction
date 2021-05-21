@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create local changes
         run: |
-          git co -b new
+          git checkout -b new
           echo abc >> def
           git add def
       - name: Commit files
