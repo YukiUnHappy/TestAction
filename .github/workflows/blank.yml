@@ -31,10 +31,12 @@ jobs:
           mkdir map-153
           mkdir map-154
           echo NEW_EXIST=true >> $GITHUB_ENV
+          if [ -n $NEW ]; then
           echo 'NEW<<EOF' >> $GITHUB_ENV
           echo '' >> $GITHUB_ENV
-          echo $(find -type d -name "map*" | tail -n 1 | tail -c +3) >> $GITHUB_ENV
+          echo 'New: $(find -type d -name "assetMap*" | tail -n 1 | tail -c +3)' >> $GITHUB_ENV
           echo EOF >> $GITHUB_ENV
+          fi
       - name: Telegram Notify
         uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
         with:
@@ -44,8 +46,7 @@ jobs:
           message: |
             Event: ${{ github.event_name }} Status: ${{ job.status }}
             ---	---	---
-            New Exist: ${{ env.NEW_EXIST }}
-            New: ${{ env.NEW }}
+            New Exist: ${{ env.NEW_EXIST }}${{ env.NEW }}
       - name: Telegram Notify (Fail)
         if: failure() || cancelled()
         uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
