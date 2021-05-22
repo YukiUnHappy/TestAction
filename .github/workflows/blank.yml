@@ -31,11 +31,12 @@ jobs:
           mkdir map-153
           mkdir map-154
           echo NEW_EXIST=true >> $GITHUB_ENV
+          NEW=
           if [ -z ${NEW+x} ]; then
-          echo 'NEW<<EOF' >> $GITHUB_ENV
-          echo '' >> $GITHUB_ENV
-          echo "New: $(find -type d -name "assetMap*" | tail -n 1 | tail -c +3)" >> $GITHUB_ENV
-          echo EOF >> $GITHUB_ENV
+            echo 'NEW<<EOF' >> $GITHUB_ENV
+            echo '' >> $GITHUB_ENV
+            echo "New: $(find -type d -name "assetMap*" | tail -n 1 | tail -c +3)" >> $GITHUB_ENV
+            echo EOF >> $GITHUB_ENV
           fi
       - name: Telegram Notify
         uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
