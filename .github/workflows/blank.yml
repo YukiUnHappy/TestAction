@@ -32,7 +32,7 @@ jobs:
           mkdir assetMap-154
           echo NEW_EXIST=true >> $GITHUB_ENV
       - name: Set Newest
-        run: echo NEWEST=$(find -type d -name "assetMap*" | tail -n 1 | tail -c +3) >> $GITHUB_ENV
+        run: echo NEWEST=$(find -type d -name "assetMap*" | tail -n 1 | tail -c -4) >> $GITHUB_ENV
       - name: Telegram Notify
         uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
         with:
@@ -42,6 +42,7 @@ jobs:
           message: |
             Event: ${{ github.event_name }} Status: ${{ job.status }}
             ---	---	---
+            Update AssetMap
             New Exist: ${{ env.NEW_EXIST }}
             Newest: ${{ env.NEWEST }}
       - name: Telegram Notify (Fail)
@@ -53,5 +54,7 @@ jobs:
           disable_web_page_preview: true
           message: |
             Event: ${{ github.event_name }} Status: ${{ job.status }}
+            ---	---	---
+            Update AssetMap
             Run Url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
