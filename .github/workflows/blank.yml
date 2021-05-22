@@ -31,7 +31,7 @@ jobs:
           mkdir map-153
           mkdir map-154
           echo NEW_EXIST=true >> $GITHUB_ENV
-          echo << EOF >> $GITHUB_ENV
+          cat << EOF >> $GITHUB_ENV
           NEW=
           $(find -type d -name "map*" | tail -n 1 | tail -c +3)
           EOF
