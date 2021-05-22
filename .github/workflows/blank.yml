@@ -31,10 +31,10 @@ jobs:
           mkdir map-153
           mkdir map-154
           echo NEW_EXIST=true >> $GITHUB_ENV
-          if [ -n $NEW ]; then
+          if [ -z ${NEW+x} ]; then
           echo 'NEW<<EOF' >> $GITHUB_ENV
           echo '' >> $GITHUB_ENV
-          echo 'New: $(find -type d -name "assetMap*" | tail -n 1 | tail -c +3)' >> $GITHUB_ENV
+          echo "New: $(find -type d -name "assetMap*" | tail -n 1 | tail -c +3)" >> $GITHUB_ENV
           echo EOF >> $GITHUB_ENV
           fi
       - name: Telegram Notify
