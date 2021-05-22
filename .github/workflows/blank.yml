@@ -20,7 +20,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      RUN_URL: ${{env.GITHUB_SERVER_URL}}/${{env.GITHUB_REPOSITORY}}/actions/runs/${{env.GITHUB_RUN_ID}}
+      RUN_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
