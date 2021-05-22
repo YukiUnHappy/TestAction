@@ -36,6 +36,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
           message: |
             Event: ${{ github.event_name }} Status: ${{ job.status }}
             ---	---	---
@@ -47,7 +48,10 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
           message: |
             Event: ${{ github.event_name }} Status: ${{ job.status }}
+            ---	---	---
+            Run: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
             Run: ${{env.GITHUB_SERVER_URL}}/${{env.GITHUB_REPOSITORY}}/actions/runs/${{env.GITHUB_RUN_ID}}
 
