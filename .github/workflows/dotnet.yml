@@ -18,4 +18,7 @@ jobs:
     - name: Build
       run: dotnet publish -c Release -o .
     - name: Test
-      run: ls -l
+      run: base ./cc
+    - name: F
+      if: failure()
+      run: ./cc
