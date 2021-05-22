@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      RUN_URL: ${{env.GITHUB_SERVER_URL}}/${{env.GITHUB_REPOSITORY}}/actions/runs/${{env.GITHUB_RUN_ID}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,7 +43,7 @@ jobs:
             Event: ${{ github.event_name }} Status: ${{ job.status }}
             ---	---	---
             Run: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-            Run: ${{env.GITHUB_SERVER_URL}}/${{env.GITHUB_REPOSITORY}}/actions/runs/${{env.GITHUB_RUN_ID}}
+            Run: ${{ env.RUN_URL }}
       - name: Telegram Notify (Fail)
         if: failure() || cancelled()
         uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
@@ -53,5 +55,5 @@ jobs:
             Event: ${{ github.event_name }} Status: ${{ job.status }}
             ---	---	---
             Run: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-            Run: ${{env.GITHUB_SERVER_URL}}/${{env.GITHUB_REPOSITORY}}/actions/runs/${{env.GITHUB_RUN_ID}}
+            Run: ${{ env.RUN_URL }}
 
