@@ -39,4 +39,13 @@ jobs:
           message: |
             Event: ${{ github.event_name }} Status: ${{ job.status }}
             ---	---	---
-            ${{ env.NEW_EXIST }}
+            Run: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }}
+      - name: Telegram Notify (Fail)
+        uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Event: ${{ github.event_name }} Status: ${{ job.status }}
+            Run: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }}
+
