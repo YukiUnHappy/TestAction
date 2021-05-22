@@ -31,8 +31,10 @@ jobs:
           mkdir map-153
           mkdir map-154
           echo NEW_EXIST=true >> $GITHUB_ENV
-          echo NEW="\
-          $(find -type d -name "map*" | tail -n 1 | tail -c +3)" >> $GITHUB_ENV
+          echo << EOF >> $GITHUB_ENV
+          NEW=
+          $(find -type d -name "map*" | tail -n 1 | tail -c +3)
+          EOF
       - name: Telegram Notify
         uses: appleboy/telegram-action@2efd23283ae25229a0b4d315d5d33f73b346ef99
         with:
