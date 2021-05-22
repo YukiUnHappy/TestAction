@@ -28,10 +28,9 @@ jobs:
         run: |
           cd happy
           echo happy >> happy
-          mkdir map-153
-          mkdir map-154
+          mkdir assetMap-153
+          mkdir assetMap-154
           echo NEW_EXIST=true >> $GITHUB_ENV
-          NEW=
           if [ -z ${NEW+x} ]; then
             echo 'NEW<<EOF' >> $GITHUB_ENV
             echo '' >> $GITHUB_ENV
