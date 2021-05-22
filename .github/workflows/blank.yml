@@ -32,7 +32,7 @@ jobs:
           mkdir assetMap-154
           echo NEW_EXIST=true >> $GITHUB_ENV
       - name: Set New
-        if: ${{ env.NEW_EXIST == true }}
+        if: ${{ env.NEW_EXIST == 'true' }}
         run: |
           echo 'NEW<<EOF' >> $GITHUB_ENV
           echo '' >> $GITHUB_ENV
