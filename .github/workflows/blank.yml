@@ -30,6 +30,7 @@ jobs:
           echo happy >> happy
           mkdir assetMap-153
           mkdir assetMap-154
+          mkdir assetMap-155
           echo NEW_EXIST=true >> $GITHUB_ENV
       - name: Set Newest
         run: echo NEWEST=$(find -type d -name "assetMap*" | tail -n 1 | tail -c -4) >> $GITHUB_ENV
